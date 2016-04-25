@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.magizbox.myapplication.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/TitleTextStyle"
+            android:layout_weight="0.5"
+            android:text="Start"
+            />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            style="@style/TitleTextStyle"
+            android:text="Stop"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:id="@+id/a1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SPEAKING"
+                style="@style/ContentTextStyle"
+                />
+
+            <TextView
+                android:id="@+id/a2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PLANING"
+                style="@style/ContentTextStyle"
+                />
+            <TextView
+                android:id="@+id/a3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="COMPLANING"
+                style="@style/ContentTextStyle"
+                />
+
+            <TextView
+                android:id="@+id/a4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="WORRYING"
+                style="@style/ContentTextStyle"
+                />
+
+            <TextView
+                android:id="@+id/a5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DOUBTING"
+                style="@style/ContentTextStyle"
+                />
+            <TextView
+                android:id="@+id/a6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DOING NOTHING"
+                style="@style/ContentTextStyle"
+                />
+            <TextView
+                android:id="@+id/a7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FROWNING"
+                style="@style/ContentTextStyle"
+                />
+            <TextView
+                android:id="@+id/a8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BEING SUSPICIOUS"
+                style="@style/ContentTextStyle"
+                />
+            <TextView
+                android:id="@+id/a9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HATING"
+                style="@style/ContentTextStyle"
+                />
+
+            <TextView
+                android:id="@+id/a10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RESENTING"
+                style="@style/ContentTextStyle"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:id="@+id/b1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LISTENING"
+                style="@style/ContentTextStyle"
+                />
+
+            <TextView
+                android:id="@+id/b2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ACTING"
+                style="@style/ContentTextStyle"
+                />
+            <TextView
+                android:id="@+id/b3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="INSPIRING"
+                style="@style/ContentTextStyle"
+                />
+
+            <TextView
+                android:id="@+id/b4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HOPING"
+                style="@style/ContentTextStyle"
+                />
+
+            <TextView
+                android:id="@+id/b5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BELIEVING"
+                style="@style/ContentTextStyle"
+                />
+            <TextView
+                android:id="@+id/b6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="WORKING HARD"
+                style="@style/ContentTextStyle"
+                />
+            <TextView
+                android:id="@+id/b7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SMILING"
+                style="@style/ContentTextStyle"
+                />
+            <TextView
+                android:id="@+id/b8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TRUSTING"
+                style="@style/ContentTextStyle"
+                />
+            <TextView
+                android:id="@+id/b9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LOVING"
+                style="@style/ContentTextStyle"
+                />
+
+            <TextView
+                android:id="@+id/b10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="UNDERSTANDING"
+                style="@style/ContentTextStyle"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
