@@ -16,6 +16,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="TitleTextStyle">
         <item name="android:gravity">center</item>
         <item name="android:textSize">40sp</item>
@@ -23,6 +24,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">sand-serif-condensed</item>
     </style>
+
     <style name="ContentTextStyle">
         <item name="android:gravity">center</item>
         <item name="android:textSize">20sp</item>
