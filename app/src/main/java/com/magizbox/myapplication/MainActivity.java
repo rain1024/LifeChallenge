@@ -1,8 +1,7 @@
 package com.magizbox.myapplication;
 
 import android.graphics.Paint;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -19,6 +18,13 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
+
+import org.apache.log4j.Logger;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -54,8 +59,9 @@ public class MainActivity extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-    }
 
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -89,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
+        public List<Action> actions;
+
         public PlaceholderFragment() {
         }
 
@@ -104,47 +112,44 @@ public class MainActivity extends AppCompatActivity {
             return fragment;
         }
 
+        OrmDbHelper mOrmDbHelper;
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            List<String> badActions = new ArrayList<String>();
-            badActions.add("SPEAKING");
-            badActions.add("PLANING");
-            badActions.add("COMPLAINING");
-            badActions.add("WORRYING");
-            badActions.add("DOUBTING");
-            badActions.add("DOING NOTHING");
-            badActions.add("FROWNING");
-            badActions.add("BEING SUSPICIOUS");
-            badActions.add("BEING RUDE");
-            badActions.add("HATING");
-            badActions.add("RESENTING");
-
-            List<String> goodActions = new ArrayList<String>();
-            goodActions.add("LISTENING");
-            goodActions.add("ACTING");
-            goodActions.add("INSPIRING");
-            goodActions.add("HOPING");
-            goodActions.add("BELIEVING");
-            goodActions.add("WORKING HARD");
-            goodActions.add("SMILING");
-            goodActions.add("TRUSTING");
-            goodActions.add("UNDERSTANDING");
-            goodActions.add("LOVING");
-            goodActions.add("BEING GRATEFUL");
 
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            int index = getArguments().getInt(ARG_SECTION_NUMBER) ;
+            int index = getArguments().getInt(ARG_SECTION_NUMBER);
 
-            String badAction = badActions.get(index - 1);
-            TextView badActionTextView = (TextView) rootView.findViewById(R.id.bad_action_label);
-            badActionTextView.setText(getString(R.string.bad_action_format, badAction));
-            badActionTextView.setPaintFlags(badActionTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            mOrmDbHelper = getHelper();
+            try {
+                Dao<Action, Integer> actionDao = mOrmDbHelper.getActionDao();
+                actions = actionDao.queryForAll();
+                System.out.println(actions.size());
 
-            String goodAction = goodActions.get(index - 1);
-            TextView goodActionTextView = (TextView) rootView.findViewById(R.id.good_action_label);
-            goodActionTextView.setText(getString(R.string.good_action_format, goodAction));
+                String badAction = actions.get(index - 1).bad;
+                TextView badActionTextView = (TextView) rootView.findViewById(R.id.bad_action_label);
+                badActionTextView.setText(getString(R.string.bad_action_format, badAction));
+                badActionTextView.setPaintFlags(badActionTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+                String goodAction = actions.get(index - 1).good;
+                TextView goodActionTextView = (TextView) rootView.findViewById(R.id.good_action_label);
+                goodActionTextView.setText(getString(R.string.good_action_format, goodAction));
+
+            } catch (SQLException e) {
+                Logger log = Logger.getLogger(PlaceholderFragment.class.getName());
+                log.error("Cannot get data");
+                e.printStackTrace();
+            }
+
             return rootView;
+        }
+
+        private OrmDbHelper getHelper() {
+            if (mOrmDbHelper == null) {
+                mOrmDbHelper = new OrmDbHelper(getActivity());
+            }
+            return mOrmDbHelper;
         }
     }
 
@@ -167,8 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 11;
+            return 1;
         }
     }
 }
