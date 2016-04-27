@@ -1,6 +1,6 @@
-# Life Challenge
+# Life 
 
-An android app for simple life challenges
+An android app for life 
 
 ## Screenshot
 
